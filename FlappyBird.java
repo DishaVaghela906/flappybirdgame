@@ -105,28 +105,28 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
         addKeyListener(this);
 
        
-        backgroundImgDay = new ImageIcon(getClass().getResource("./Background2.jpg")).getImage();
-        birdImgDay = new ImageIcon(getClass().getResource("./Bird211.png")).getImage();
-        bottomPipeImg = new ImageIcon(getClass().getResource("./TubeBody12.png")).getImage();
-        topPipeImg= new ImageIcon(getClass().getResource("./TubeBody.png")).getImage();
+        backgroundImgDay = new ImageIcon(getClass().getResource("Background2.jpg")).getImage();
+        birdImgDay = new ImageIcon(getClass().getResource("Bird211.png")).getImage();
+        bottomPipeImg = new ImageIcon(getClass().getResource("TubeBody12.png")).getImage();
+        topPipeImg= new ImageIcon(getClass().getResource("TubeBody.png")).getImage();
         
    
-        backgroundImgDark = new ImageIcon(getClass().getResource("./potterhead.jpg")).getImage();
-        birdImgDark = new ImageIcon(getClass().getResource("./harryPotter.png")).getImage();
-       // topPipeImgDark = new ImageIcon(getClass().getResource("./harryPipetop.png")).getImage();
-      //  bottomPipeImgDark = new ImageIcon(getClass().getResource("./harryPipebottom.png")).getImage();
-        
+        backgroundImgDark = new ImageIcon(getClass().getResource("potterhead.jpg")).getImage();
+        birdImgDark = new ImageIcon(getClass().getResource("harryPotter.png")).getImage();
+        //topPipeImgDark = new ImageIcon(getClass().getResource("./harryPipetop.png")).getImage();
+       // bottomPipeImgDark = new ImageIcon(getClass().getResource("./harryPipebottom.png")).getImage();
+
 
         if ("day".equals(mode)) {
             backgroundImg = backgroundImgDay;
             birdImg = birdImgDay;
-            //bottomPipeImg =  bottomPipeImgDay;      
-           // topPipeImg = topPipeImgDay;
+            bottomPipeImg =  bottomPipeImgDay;      
+            topPipeImg = topPipeImgDay;
         } else if ("dark".equals(mode)) {
             backgroundImg = backgroundImgDark;
             birdImg = birdImgDark;
             //bottomPipeImg =  bottomPipeImgDark;      
-           // topPipeImg = topPipeImgDark;
+            //topPipeImg = topPipeImgDark;
         }
         
         bird = new Bird(birdImg);
@@ -303,9 +303,10 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
     }
 
     private Connection getConnection() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/flappybird";
+        // FIX: Port changed from 3306 to 3308, Password changed from "root" to ""
+        String url = "jdbc:mysql://localhost:3306/flappybird"; 
         String user = "root";
-        String password = "root";
+        String password = "root"; // Empty string for WAMP default
         return DriverManager.getConnection(url, user, password);
     }
 

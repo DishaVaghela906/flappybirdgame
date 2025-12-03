@@ -81,14 +81,18 @@ public class DataBase extends JFrame implements ActionListener {
         }
     }
 
-    private void registerUser(String username, String password) {
+    private boolean registerUser(String username, String password) {
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/flappybird", "root", "root");
              PreparedStatement statement = connection.prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)")) {
             statement.setString(1, username);
             statement.setString(2, password);
             statement.executeUpdate();
+            return true;
         } catch (SQLException ex) {
+            String errorMessage = "Registration failed.\nReason: " + ex.getMessage();
+            JOptionPane.showMessageDialog(this, errorMessage, "Database Error", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
+            return false;
         }
     }
 
