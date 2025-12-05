@@ -120,8 +120,8 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
         if ("day".equals(mode)) {
             backgroundImg = backgroundImgDay;
             birdImg = birdImgDay;
-            bottomPipeImg =  bottomPipeImgDay;      
-            topPipeImg = topPipeImgDay;
+           // bottomPipeImg =  bottomPipeImgDay;      
+           // topPipeImg = topPipeImgDay;
         } else if ("dark".equals(mode)) {
             backgroundImg = backgroundImgDark;
             birdImg = birdImgDark;
